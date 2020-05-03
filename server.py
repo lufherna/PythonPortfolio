@@ -34,13 +34,14 @@ def write_to_csv(data):
 # the request.form.to_dict() creates a dictionary with all our info
 @app.route('/submit_form', methods=['POST', 'GET'])
 def submit_form():
-    if request.method == 'POST':
-    	try:
-	    	data = request.form.to_dict()
-	    	print(data)
-	    	write_to_csv(data)
-	    	return redirect('/thankyou.html')
-	    # except:
-	    # 	return 'Did not Save correctly'
+	if request.method == 'POST':
+		try:
+			data = request.form.to_dict()
+			write_to_csv(data)
+			return redirect('/thankyou.html')
+		except:
+			return 'Did not Save Correctly'
 	else:
-	   	return 'Something went wrong. Try again though'
+		return 'Blah this is all wrong! Try again!'
+
+
